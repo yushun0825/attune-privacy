@@ -1,6 +1,6 @@
 # Attune プライバシーポリシー
 
-最終更新日: 2026年7月31日
+最終更新日: 2026年9月29日
 
 Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可視化する個人向けアプリです。
 本アプリは**あなたの健康情報を開発者に送信しません**。この方針は機能上の制約ではなく、設計上の前提です。
@@ -21,8 +21,11 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 |---|---|---|
 | 気分・症状・水分/カフェイン/飲酒・食事・服薬・サプリ・仮眠・トイレの記録、1日のふりかえり | あなたの手入力 | この端末内、およびあなた自身のiCloud |
 | 移動・滞在した場所(自動記録をオンにした場合のみ) | 位置情報 | 同上 |
-| 睡眠・心拍・心拍変動・歩数・消費エネルギー・呼吸数・手首皮膚温・ワークアウト・水分・カフェイン | ヘルスケア(HealthKit) | **この端末内のみ**(iCloudには保管しません) |
-| 気圧・気温・湿度・天気 | Open-Meteo(気象API) | 同上 |
+| 睡眠(時間・ステージ・呼吸の乱れ)・心拍・心拍変動・安静時心拍・歩数・消費エネルギー・呼吸数・手首皮膚温・ワークアウト・血中酸素・血糖・体組成・栄養・服薬・月経周期・心電図・メンタルヘルスの質問票、および生年月日・生物学的性別・身長・体重 | ヘルスケア(HealthKit) | **この端末内のみ**(iCloudには保管しません) |
+| 気圧・気温・湿度・天気・大気質(PM2.5)・紫外線 | Open-Meteo(気象API) | 同上 |
+| 食事の写真から読み取った料理名・成分表の文字 | カメラ | **この端末内のみ**。写真は保存も送信もしません |
+| 移動手段(徒歩・自転車・乗り物)の判定 | モーションとフィットネス | この端末内、およびあなた自身のiCloud |
+| 1日のふりかえりに添えた写真 | あなたが選んだ写真 | この端末内(長辺1200pxに縮小)、およびあなた自身のiCloud |
 | アプリの設定 | あなたの操作 | この端末内、およびあなた自身のiCloud |
 
 ## 3. iCloudでの同期について
@@ -32,6 +35,9 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 同期はiCloudにサインインしている場合に自動的に行われ、アプリ内でアカウントを作る必要はありません。
 
 なお、**ヘルスケア由来のデータはiCloudに保管しません**。これはAppleの開発者規約に従った措置です。
+基礎情報(生年月日・生物学的性別・身長・体重)をヘルスケアから読み取って初期値に使う場合も、
+読み取った値はこの端末の中だけに保持します。あなたが自分で入力し直した値だけが、
+アプリの設定としてiCloudに同期されます。
 
 ## 4. 位置情報の利用
 
@@ -39,6 +45,26 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 - **移動と場所の自動記録**: 設定でオンにした場合のみ、滞在した場所と移動を自動的に記録します。この記録はタイムラインに「自動」と表示され、いつでも削除できます。オフのままにしても、本アプリの他の機能はすべて利用できます。
 
 位置情報の利用を許可しない場合、天気の表示は東京の値で代替され、その旨が画面に明示されます。
+
+## 4-2. Siri と端末内検索(Spotlight)
+
+症状の記録を、この端末の Spotlight の索引に入れています。ホーム画面の検索や Siri から
+「先週いつ頭痛だったか」を辿れるようにするためです。
+
+- 索引に入れるのは**症状の種類・強さ・日付**だけです。**あなたが書いたメモは入れません**
+  (索引はロック画面の候補にも表示されるため)
+- 索引はこの端末の中だけのもので、**外部にも開発者にも送信しません**。iCloud でも同期しません
+- 設定 >「Siri と検索に出す」でいつでも切れます。切った時点で索引から削除します
+
+## 4-3. 文章の生成(端末内、任意で Apple の Private Cloud Compute)
+
+「今日のヒント」「自分のデータに聞く」の文章は、**既定ではこの端末の中で**生成します。記録は外に出ません。
+
+設定 >「より詳しい文章を Apple のクラウドで作る」を**あなたがオンにしたときだけ**、
+「自分のデータに聞く」の答えを Apple の Private Cloud Compute で生成します。
+そのとき送られるのは、**アプリが計算した事実の文**(例:「昨夜の睡眠時間: 5.4時間」)と質問文だけで、
+記録そのものは送られません。Private Cloud Compute の扱いは Apple の規定に従い、開発者はその内容にアクセスできません。
+既定はオフで、いつでも切れます。
 
 ## 5. 外部サービスへの送信
 
@@ -85,7 +111,7 @@ Appleでサインインすると、書き出したバックアップファイル
 
 # Attune Privacy Policy
 
-Last updated: July 31, 2026
+Last updated: September 29, 2026
 
 Attune helps you see how your body responds to your environment. **It does not send your health information to the developer.** That is a design premise, not a limitation.
 
@@ -101,8 +127,11 @@ There is no developer-operated server and no account to create. The app contains
 |---|---|---|
 | Mood, symptoms, drinks (water/caffeine/alcohol), meals, medication, supplements, naps, bathroom visits, daily review | Your input | On this device and in your own iCloud |
 | Trips and places visited (only if auto-recording is on) | Location | Same as above |
-| Sleep, heart rate, HRV, steps, active energy, respiratory rate, wrist temperature, workouts, water, caffeine | Health (HealthKit) | **On this device only** — never in iCloud |
-| Air pressure, temperature, humidity, weather | Open-Meteo | Same as above |
+| Sleep (duration, stages, breathing disturbances), heart rate, HRV, resting heart rate, steps, active energy, respiratory rate, wrist temperature, workouts, blood oxygen, blood glucose, body composition, nutrition, medication, cycle tracking, ECG, mental-health questionnaires, and date of birth, biological sex, height and weight | Health (HealthKit) | **On this device only** — never in iCloud |
+| Air pressure, temperature, humidity, weather, air quality (PM2.5), UV | Open-Meteo | Same as above |
+| Dish names and label text read from a photo of a meal | Camera | **On this device only.** Photos are never saved or sent |
+| Travel mode (walking, cycling, in a vehicle) | Motion & Fitness | On this device and in your own iCloud |
+| A photo attached to a daily review | A photo you choose | On this device (downscaled to 1200px on its long edge) and in your own iCloud |
 | App settings | Your choices | On this device and in your own iCloud |
 
 ## 3. iCloud sync
@@ -110,6 +139,8 @@ There is no developer-operated server and no account to create. The app contains
 Your records are stored in Apple's iCloud (CloudKit private database) and synced across devices signed in to the same Apple Account. This is your own iCloud storage; **the developer cannot access its contents**. Sync happens automatically when you are signed in to iCloud — there is no account to create in the app.
 
 **Health-derived data is never stored in iCloud**, in accordance with Apple's developer agreement.
+When your date of birth, biological sex, height or weight is read from Health to prefill your profile,
+that value is kept on this device only. Only a value you type in yourself is synced to iCloud as an app setting.
 
 ## 4. Location
 
@@ -117,6 +148,25 @@ Your records are stored in Apple's iCloud (CloudKit private database) and synced
 - **Auto-recording trips and places**: only when you turn it on in Settings. These entries are marked "Auto" in your timeline and can be deleted at any time. Leaving it off does not limit any other feature.
 
 If you decline location access, weather falls back to Tokyo, and the app states this on screen.
+
+## 4-2. Siri and on-device search (Spotlight)
+
+Your symptom records are added to this device's Spotlight index, so that Siri and the Home Screen
+search can answer questions such as "when did I last have a headache".
+
+- Only the **symptom, its severity and the date** are indexed. **Your notes are never included**,
+  because the index can surface in Lock Screen suggestions
+- The index stays on this device. It is **never sent anywhere, including to the developer**, and is not synced through iCloud
+- You can turn it off at any time in Settings › Show in Siri and Search. Turning it off deletes the index straight away
+
+## 4-3. Text generation (on device; Apple's Private Cloud Compute is optional)
+
+The text in "Today's tip" and "Ask my data" is generated **on this device by default**. Your records do not leave it.
+
+Only if **you** turn on Settings › "Write more detailed answers with Apple's cloud" are the answers in "Ask my data"
+generated with Apple's Private Cloud Compute. What is sent then is the question and the **facts the app computed**
+(for example "Last night's sleep: 5.4 hours"), never your records themselves. Private Cloud Compute is governed by
+Apple's terms; the developer cannot access its contents. It is off by default and can be turned off at any time.
 
 ## 5. Data sent to outside services
 
@@ -151,4 +201,4 @@ Any change is reflected in the "Last updated" date above. Significant changes wi
 
 ## 11. Contact
 
-- Email: (add a contact address before publishing)
+- Email: yushun0825.o@gmail.com
