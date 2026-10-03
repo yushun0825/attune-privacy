@@ -1,6 +1,6 @@
 # Attune プライバシーポリシー
 
-最終更新日: 2026年9月29日
+最終更新日: 2026年10月1日
 
 Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可視化する個人向けアプリです。
 本アプリは**あなたの健康情報を開発者に送信しません**。この方針は機能上の制約ではなく、設計上の前提です。
@@ -58,21 +58,32 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 
 ## 4-3. 文章の生成(端末内、任意で Apple の Private Cloud Compute)
 
-「今日のヒント」「自分のデータに聞く」の文章は、**既定ではこの端末の中で**生成します。記録は外に出ません。
+「今日の要約」「今日のアドバイス」「自分のデータに聞く」の文章は、**既定ではこの端末の中で**生成します。記録は外に出ません。
 
 設定 >「より詳しい文章を Apple のクラウドで作る」を**あなたがオンにしたときだけ**、
-「自分のデータに聞く」の答えを Apple の Private Cloud Compute で生成します。
-そのとき送られるのは、**アプリが計算した事実の文**(例:「昨夜の睡眠時間: 5.4時間」)と質問文だけで、
-記録そのものは送られません。Private Cloud Compute の扱いは Apple の規定に従い、開発者はその内容にアクセスできません。
+「自分のデータに聞く」の答えと「今日のアドバイス」を Apple の Private Cloud Compute で生成します。
+そのとき送られるのは、**アプリが計算した事実の文**(例:「昨夜の睡眠時間: 5.4時間」)と、質問文、
+助言の候補の文(アプリに入っている、出典つきの一般的な助言)だけで、記録そのものは送られません。Private Cloud Compute の扱いは Apple の規定に従い、開発者はその内容にアクセスできません。
 既定はオフで、いつでも切れます。
 
 ## 5. 外部サービスへの送信
 
-本アプリが外部に通信するのは、気象データの取得のみです。
+本アプリが開発者のサーバーに何かを送ることはありません。外部への通信は次の2つです。
+
+**気象と大気の情報の取得**(常に)
 
 - **送信先**: Open-Meteo(https://open-meteo.com)
 - **送信する内容**: おおよその緯度・経度
 - **送信しない内容**: 氏名、メールアドレス、端末ID、健康に関する記録、その他あなたを特定しうる情報
+
+**場所の名前の検索**(「移動と場所の自動記録」をオンにした場合と、場所を手で記録・編集するとき)
+
+- **送信先**: Apple の地図サービス(MapKit)
+- **送信する内容**: その地点の緯度・経度
+- **目的**: 滞在した場所の施設名・住所を調べ、タイムラインに名前を出すため
+- **送信しない内容**: 氏名、メールアドレス、健康に関する記録。Apple での扱いは Apple のプライバシーポリシーに従います
+
+このほか、iCloud での同期(3.)と、任意の Private Cloud Compute(4-3.)は Apple のサービスを使います。
 
 ## 6. Appleでサインイン(任意)
 
@@ -111,7 +122,7 @@ Appleでサインインすると、書き出したバックアップファイル
 
 # Attune Privacy Policy
 
-Last updated: September 29, 2026
+Last updated: October 1, 2026
 
 Attune helps you see how your body responds to your environment. **It does not send your health information to the developer.** That is a design premise, not a limitation.
 
@@ -161,20 +172,31 @@ search can answer questions such as "when did I last have a headache".
 
 ## 4-3. Text generation (on device; Apple's Private Cloud Compute is optional)
 
-The text in "Today's tip" and "Ask my data" is generated **on this device by default**. Your records do not leave it.
+The text in "Today's summary", "Today's advice" and "Ask my data" is generated **on this device by default**. Your records do not leave it.
 
 Only if **you** turn on Settings › "Write more detailed answers with Apple's cloud" are the answers in "Ask my data"
-generated with Apple's Private Cloud Compute. What is sent then is the question and the **facts the app computed**
-(for example "Last night's sleep: 5.4 hours"), never your records themselves. Private Cloud Compute is governed by
+and "Today's advice" generated with Apple's Private Cloud Compute. What is sent then is the question, the **facts the app computed**
+(for example "Last night's sleep: 5.4 hours") and the candidate tips (general, cited tips built into the app), never your records themselves. Private Cloud Compute is governed by
 Apple's terms; the developer cannot access its contents. It is off by default and can be turned off at any time.
 
 ## 5. Data sent to outside services
 
-The only outbound network request is for weather data.
+The app never sends anything to the developer's servers. There are two kinds of outbound request.
+
+**Weather and air-quality data** (always)
 
 - **Recipient**: Open-Meteo (https://open-meteo.com)
 - **Sent**: approximate latitude and longitude
 - **Never sent**: name, email, device identifiers, health records, or anything else that could identify you
+
+**Place-name lookup** (when "automatic places and trips" is on, and when you log or edit a place by hand)
+
+- **Recipient**: Apple's map service (MapKit)
+- **Sent**: the latitude and longitude of that spot
+- **Purpose**: to find the venue name or address of the place you stayed, so the timeline can show a name
+- **Never sent**: name, email, or health records. Apple handles the request under Apple's privacy policy
+
+In addition, iCloud sync (section 3) and the optional Private Cloud Compute (section 4-3) use Apple's services.
 
 ## 6. Sign in with Apple (optional)
 
