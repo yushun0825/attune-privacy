@@ -1,6 +1,6 @@
 # Attune プライバシーポリシー
 
-最終更新日: 2026年10月1日
+最終更新日: 2026年10月18日
 
 Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可視化する個人向けアプリです。
 本アプリは**あなたの健康情報を開発者に送信しません**。この方針は機能上の制約ではなく、設計上の前提です。
@@ -11,7 +11,8 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 
 **ありません。**
 
-本アプリには開発者が運営するサーバーが存在しません。アカウント登録もありません。
+本アプリには開発者が運営するサーバーが存在しません。開発者のサーバーにアカウントを作ることもありません
+(Appleでサインインは任意で、この端末の中だけで使います。6.を参照)。
 利用状況の解析ツール(アナリティクス)、広告SDK、クラッシュレポート収集ツールのいずれも組み込んでいません。
 したがって、あなたが記録した内容・ヘルスケアのデータ・位置情報を開発者が閲覧・取得することはできません。
 
@@ -68,12 +69,12 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 
 ## 5. 外部サービスへの送信
 
-本アプリが開発者のサーバーに何かを送ることはありません。外部への通信は次の2つです。
+本アプリが開発者のサーバーに何かを送ることはありません。外部への通信は次の3つです。
 
 **気象と大気の情報の取得**(常に)
 
-- **送信先**: Open-Meteo(https://open-meteo.com)
-- **送信する内容**: おおよその緯度・経度
+- **送信先**: Open-Meteo(https://open-meteo.com。直近の予報と実況は api.open-meteo.com、過去1年ぶんの実況は archive-api.open-meteo.com)
+- **送信する内容**: おおよその緯度・経度と、取得したい日付の範囲
 - **送信しない内容**: 氏名、メールアドレス、端末ID、健康に関する記録、その他あなたを特定しうる情報
 
 **場所の名前の検索**(「移動と場所の自動記録」をオンにした場合と、場所を手で記録・編集するとき)
@@ -83,19 +84,33 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 - **目的**: 滞在した場所の施設名・住所を調べ、タイムラインに名前を出すため
 - **送信しない内容**: 氏名、メールアドレス、健康に関する記録。Apple での扱いは Apple のプライバシーポリシーに従います
 
+**おすすめのアプリの名前とアイコンの取得**(「データ」の画面を開いたとき)
+
+- **送信先**: Apple の App Store(iTunes Search API)
+- **送信する内容**: アプリに組み込まれたおすすめアプリの番号と、ヘルスケアに書き込んでいるアプリの識別子(例: com.strava.stravaride)、端末の国と言語
+- **目的**: 「つながっているアプリ」「おすすめのアプリ」の行に、App Store の名前とアイコンを出すため
+- **送信しない内容**: 氏名、メールアドレス、端末ID、健康に関する記録。どのアプリの番号を問い合わせたかは、Apple の規定に従って扱われます
+
 このほか、iCloud での同期(3.)と、任意の Private Cloud Compute(4-3.)は Apple のサービスを使います。
 
 ## 6. Appleでサインイン(任意)
 
-Appleでサインインすると、書き出したバックアップファイルに「持ち主の目印」が付き、復元時に自分の記録であることを確認できます。
+はじめの説明または 設定 → アカウント から、Appleでサインインできます。サインインすると、名前とアイコン(名前の頭文字)が表示され、
+書き出したバックアップファイルに「持ち主の目印」が付き、復元時に自分の記録であることを確認できます。
 サインインしなくても、本アプリのすべての機能を利用できます。
-取得する情報は氏名(任意)とAppleが発行する識別子のみで、いずれも**この端末のキーチェーンにのみ保存**され、外部に送信されません。
+取得する情報は氏名(任意)とAppleが発行する識別子のみで(メールアドレスは求めません)、いずれも**この端末のキーチェーンにのみ保存**され、
+外部に送信されません。名前はアプリ内で変更できます。Apple Account のプロフィール写真は取得しません(Appleの仕組み上、取得できません)。
+アイコンに写真を選んだ場合、その写真は小さく切り取ってこの端末とあなたのiCloudにのみ保存します。
 
 ## 7. あなたの権利と操作
 
-- **書き出し**: 設定 → アカウントとデータ → バックアップを書き出す で、すべての記録を1つのファイルとして取り出せます。
-- **削除**: 設定 → アカウントとデータ → すべての記録を削除 で、記録とサインイン情報を消去できます。iCloud同期をしている場合、他の端末からも削除されます。
-- **アプリの削除**: 端末からアプリを削除すると、端末内の記録も削除されます。iCloud上のデータを完全に消すには、削除の前に上記の「すべての記録を削除」を実行してください。
+- **書き出し**: 設定 → アカウント → バックアップを書き出す で、すべての記録を1つのファイルとして取り出せます。
+- **アカウントの削除**: 設定 → アカウント → アカウントを削除 で、本アプリで付けた記録・サインインの情報・アイコン・設定・
+  端末内の控え(学習した普段の値など)を、この端末とあなたのiCloudから削除できます。iCloud同期をしている場合、他の端末からも削除されます。
+  選んだ場合は、本アプリがヘルスケアに書き込んだ記録も削除します(他のアプリやApple Watchの記録は削除しません)。
+  開発者のサーバーには何も保管していないため、削除したものが残ることはありません。
+  Appleでサインインの連携は、iPhoneの 設定 → 名前 → Appleでサインイン → Attune → 削除 で外せます(削除の画面でも案内します)。
+- **アプリの削除**: 端末からアプリを削除すると、端末内の記録も削除されます。iCloud上のデータを完全に消すには、削除の前に上記の「アカウントを削除」を実行してください。
 - **ヘルスケアの許可の取り消し**: ヘルスケアApp → プロフィール → プライバシー → App → Attune から、いつでも変更できます。
 
 ## 8. 子どものプライバシー
@@ -122,7 +137,7 @@ Appleでサインインすると、書き出したバックアップファイル
 
 # Attune Privacy Policy
 
-Last updated: October 1, 2026
+Last updated: October 18, 2026
 
 Attune helps you see how your body responds to your environment. **It does not send your health information to the developer.** That is a design premise, not a limitation.
 
@@ -130,7 +145,7 @@ Attune helps you see how your body responds to your environment. **It does not s
 
 **Nothing.**
 
-There is no developer-operated server and no account to create. The app contains no analytics, no advertising SDKs, and no crash-reporting services. The developer cannot see or retrieve anything you log, any Health data, or your location.
+There is no developer-operated server, and no account is ever created on one (Sign in with Apple is optional and used only on this device; see section 6). The app contains no analytics, no advertising SDKs, and no crash-reporting services. The developer cannot see or retrieve anything you log, any Health data, or your location.
 
 ## 2. What the app handles, and where it is stored
 
@@ -147,7 +162,7 @@ There is no developer-operated server and no account to create. The app contains
 
 ## 3. iCloud sync
 
-Your records are stored in Apple's iCloud (CloudKit private database) and synced across devices signed in to the same Apple Account. This is your own iCloud storage; **the developer cannot access its contents**. Sync happens automatically when you are signed in to iCloud — there is no account to create in the app.
+Your records are stored in Apple's iCloud (CloudKit private database) and synced across devices signed in to the same Apple Account. This is your own iCloud storage; **the developer cannot access its contents**. Sync happens automatically when you are signed in to iCloud — you do not need to create an account in the app.
 
 **Health-derived data is never stored in iCloud**, in accordance with Apple's developer agreement.
 When your date of birth, biological sex, height or weight is read from Health to prefill your profile,
@@ -181,12 +196,12 @@ Apple's terms; the developer cannot access its contents. It is off by default an
 
 ## 5. Data sent to outside services
 
-The app never sends anything to the developer's servers. There are two kinds of outbound request.
+The app never sends anything to the developer's servers. There are three kinds of outbound request.
 
 **Weather and air-quality data** (always)
 
-- **Recipient**: Open-Meteo (https://open-meteo.com)
-- **Sent**: approximate latitude and longitude
+- **Recipient**: Open-Meteo (https://open-meteo.com; recent forecasts and observations from api.open-meteo.com, the past year's observations from archive-api.open-meteo.com)
+- **Sent**: approximate latitude and longitude, and the date range requested
 - **Never sent**: name, email, device identifiers, health records, or anything else that could identify you
 
 **Place-name lookup** (when "automatic places and trips" is on, and when you log or edit a place by hand)
@@ -196,17 +211,27 @@ The app never sends anything to the developer's servers. There are two kinds of 
 - **Purpose**: to find the venue name or address of the place you stayed, so the timeline can show a name
 - **Never sent**: name, email, or health records. Apple handles the request under Apple's privacy policy
 
+**App names and icons for suggested apps** (when you open the "Data" screen)
+
+- **Recipient**: Apple's App Store (iTunes Search API)
+- **Sent**: the App Store IDs of the suggested apps built into Attune, the identifiers of apps that write to Health (for example com.strava.stravaride), and the device's country and language
+- **Purpose**: to show App Store names and icons in the "Connected apps" and "Suggested apps" rows
+- **Never sent**: name, email, device identifiers, or health records. Which app IDs were looked up is handled under Apple's policies
+
 In addition, iCloud sync (section 3) and the optional Private Cloud Compute (section 4-3) use Apple's services.
 
 ## 6. Sign in with Apple (optional)
 
-Signing in stamps exported backups with an owner marker so a restore can confirm the records are yours. Every feature works without signing in. The app requests only your name (optional) and Apple's identifier; both are stored **only in this device's Keychain** and are never transmitted.
+You can sign in with Apple from the first-launch screens or from Settings → Account. Signing in shows your name and an icon (your initials), and stamps exported backups with an owner marker so a restore can confirm the records are yours. Every feature works without signing in.
+The app requests only your name (optional) and Apple's identifier (it does not ask for your email address); both are stored **only in this device's Keychain** and are never transmitted. You can change the name in the app. The app does not receive your Apple Account profile photo (Apple does not make it available). If you choose a photo for the icon, it is cropped small and stored only on this device and in your iCloud.
 
 ## 7. Your controls
 
-- **Export**: Settings → Account & Data → Export Backup writes all records to a single file.
-- **Delete**: Settings → Account & Data → Delete All Records erases your records and sign-in. With iCloud sync on, they are removed from your other devices too.
-- **Deleting the app** removes the on-device copy. To also clear iCloud, use "Delete All Records" before deleting the app.
+- **Export**: Settings → Account → Export Backup writes all records to a single file.
+- **Delete Account**: Settings → Account → Delete Account deletes the records you made in the app, your sign-in information, icon, settings and on-device data (such as learned usual values) from this device and your iCloud. With iCloud sync on, they are removed from your other devices too.
+  If you choose, the records the app wrote to Health are deleted as well (records from other apps or Apple Watch are not). Nothing is kept on a developer server, so nothing deleted remains anywhere.
+  To remove the Sign in with Apple link, go to iPhone Settings → your name → Sign in with Apple → Attune → Delete (the deletion screen shows this too).
+- **Deleting the app** removes the on-device copy. To also clear iCloud, use "Delete Account" before deleting the app.
 - **Revoking Health access**: Health app → Profile → Privacy → Apps → Attune.
 
 ## 8. Children's privacy
