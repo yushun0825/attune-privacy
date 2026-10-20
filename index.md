@@ -1,6 +1,6 @@
 # Attune プライバシーポリシー
 
-最終更新日: 2026年10月18日
+最終更新日: 2026年10月20日
 
 Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可視化する個人向けアプリです。
 本アプリは**あなたの健康情報を開発者に送信しません**。この方針は機能上の制約ではなく、設計上の前提です。
@@ -23,7 +23,7 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 | 気分・症状・水分/カフェイン/飲酒・食事・服薬・サプリ・仮眠・トイレの記録、1日のふりかえり | あなたの手入力 | この端末内、およびあなた自身のiCloud |
 | 移動・滞在した場所(自動記録をオンにした場合のみ) | 位置情報 | 同上 |
 | 睡眠(時間・ステージ・呼吸の乱れ)・心拍・心拍変動・安静時心拍・歩数・消費エネルギー・呼吸数・手首皮膚温・ワークアウト・血中酸素・血糖・体組成・栄養・服薬・月経周期・心電図・メンタルヘルスの質問票、および生年月日・生物学的性別・身長・体重 | ヘルスケア(HealthKit) | **この端末内のみ**(iCloudには保管しません) |
-| 気圧・気温・湿度・天気・大気質(PM2.5)・紫外線 | Open-Meteo(気象API) | 同上 |
+| 気圧・気温・湿度・天気・紫外線 | Apple の天気(WeatherKit) | 同上 |
 | 食事の写真から読み取った料理名・成分表の文字 | カメラ | **この端末内のみ**。写真は保存も送信もしません |
 | 移動手段(徒歩・自転車・乗り物)の判定 | モーションとフィットネス | この端末内、およびあなた自身のiCloud |
 | 1日のふりかえりに添えた写真 | あなたが選んだ写真 | この端末内(長辺1200pxに縮小)、およびあなた自身のiCloud |
@@ -71,11 +71,11 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 
 本アプリが開発者のサーバーに何かを送ることはありません。外部への通信は次の3つです。
 
-**気象と大気の情報の取得**(常に)
+**気象の情報の取得**(常に)
 
-- **送信先**: Open-Meteo(https://open-meteo.com。直近の予報と実況は api.open-meteo.com、過去1年ぶんの実況は archive-api.open-meteo.com)
-- **送信する内容**: おおよその緯度・経度と、取得したい日付の範囲
-- **送信しない内容**: 氏名、メールアドレス、端末ID、健康に関する記録、その他あなたを特定しうる情報
+- **送信先**: Apple の天気サービス(WeatherKit)
+- **送信する内容**: おおよその緯度・経度と、取得したい日時の範囲(直近の予報と実況、過去1年ぶんの実況)
+- **送信しない内容**: 氏名、メールアドレス、健康に関する記録、その他あなたを特定しうる情報。Apple での扱いは Apple のプライバシーポリシーに従います
 
 **場所の名前の検索**(「移動と場所の自動記録」をオンにした場合と、場所を手で記録・編集するとき)
 
@@ -101,6 +101,12 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 取得する情報は氏名(任意)とAppleが発行する識別子のみで(メールアドレスは求めません)、いずれも**この端末のキーチェーンにのみ保存**され、
 外部に送信されません。名前はアプリ内で変更できます。Apple Account のプロフィール写真は取得しません(Appleの仕組み上、取得できません)。
 アイコンに写真を選んだ場合、その写真は小さく切り取ってこの端末とあなたのiCloudにのみ保存します。
+
+## 6-2. Attune プレミアム(サブスクリプション)
+
+Attune プレミアムの購入・更新・解約は、Apple の App Store で行われます。支払いの情報(カード番号など)を開発者が受け取ることはありません。
+購読しているかどうかは、Apple が署名した購入の記録を**この端末の中で**読んで確かめます。そのために開発者のサーバーへ何かを送ることはありません。
+解約は、iPhone の 設定 → 名前 → サブスクリプション、または本アプリの 設定 → Attune プレミアム から行えます。
 
 ## 7. あなたの権利と操作
 
@@ -137,7 +143,7 @@ Attune(以下「本アプリ」)は、あなたの体調と環境の関係を可
 
 # Attune Privacy Policy
 
-Last updated: October 18, 2026
+Last updated: October 20, 2026
 
 Attune helps you see how your body responds to your environment. **It does not send your health information to the developer.** That is a design premise, not a limitation.
 
@@ -154,7 +160,7 @@ There is no developer-operated server, and no account is ever created on one (Si
 | Mood, symptoms, drinks (water/caffeine/alcohol), meals, medication, supplements, naps, bathroom visits, daily review | Your input | On this device and in your own iCloud |
 | Trips and places visited (only if auto-recording is on) | Location | Same as above |
 | Sleep (duration, stages, breathing disturbances), heart rate, HRV, resting heart rate, steps, active energy, respiratory rate, wrist temperature, workouts, blood oxygen, blood glucose, body composition, nutrition, medication, cycle tracking, ECG, mental-health questionnaires, and date of birth, biological sex, height and weight | Health (HealthKit) | **On this device only** — never in iCloud |
-| Air pressure, temperature, humidity, weather, air quality (PM2.5), UV | Open-Meteo | Same as above |
+| Air pressure, temperature, humidity, weather, UV | Apple Weather (WeatherKit) | Same as above |
 | Dish names and label text read from a photo of a meal | Camera | **On this device only.** Photos are never saved or sent |
 | Travel mode (walking, cycling, in a vehicle) | Motion & Fitness | On this device and in your own iCloud |
 | A photo attached to a daily review | A photo you choose | On this device (downscaled to 1200px on its long edge) and in your own iCloud |
@@ -198,11 +204,11 @@ Apple's terms; the developer cannot access its contents. It is off by default an
 
 The app never sends anything to the developer's servers. There are three kinds of outbound request.
 
-**Weather and air-quality data** (always)
+**Weather data** (always)
 
-- **Recipient**: Open-Meteo (https://open-meteo.com; recent forecasts and observations from api.open-meteo.com, the past year's observations from archive-api.open-meteo.com)
-- **Sent**: approximate latitude and longitude, and the date range requested
-- **Never sent**: name, email, device identifiers, health records, or anything else that could identify you
+- **Recipient**: Apple's weather service (WeatherKit)
+- **Sent**: approximate latitude and longitude, and the time range requested (recent forecasts and observations, and the past year's observations)
+- **Never sent**: name, email, health records, or anything else that could identify you. Apple handles the request under Apple's privacy policy
 
 **Place-name lookup** (when "automatic places and trips" is on, and when you log or edit a place by hand)
 
@@ -224,6 +230,12 @@ In addition, iCloud sync (section 3) and the optional Private Cloud Compute (sec
 
 You can sign in with Apple from the first-launch screens or from Settings → Account. Signing in shows your name and an icon (your initials), and stamps exported backups with an owner marker so a restore can confirm the records are yours. Every feature works without signing in.
 The app requests only your name (optional) and Apple's identifier (it does not ask for your email address); both are stored **only in this device's Keychain** and are never transmitted. You can change the name in the app. The app does not receive your Apple Account profile photo (Apple does not make it available). If you choose a photo for the icon, it is cropped small and stored only on this device and in your iCloud.
+
+## 6-2. Attune Premium (subscription)
+
+Attune Premium is bought, renewed and cancelled through Apple's App Store. The developer never receives your payment details (such as card numbers).
+Whether you are subscribed is checked **on this device** by reading the purchase record signed by Apple; nothing is sent to the developer's servers for this.
+You can cancel in the iPhone's Settings › your name › Subscriptions, or in the app's Settings › Attune Premium.
 
 ## 7. Your controls
 
